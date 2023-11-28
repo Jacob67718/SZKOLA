@@ -1,0 +1,15 @@
+Wysrodkowac pojedyncza rzecz:
+
+    .flex{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+Wysrodkować wiecej elementow:
+    .grid{
+        display: grid;
+        grid-template-columns: 1fr 500px 1fr;
+        grtid-template-rows: 100px 200px;
+        placeitems: center;
+    }
