@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <span id="proby" style="float: right; margin: 10px; font-size: 20px;">Próby: 0</span><br>
+    <h1 style="font-size: 50px;">GUESS THE COLOR</h1>
+    <div id="kolor"></div>
+    <button id="bt_RGB">RGB</button>
+    <button id="bt_HEX">HEX</button><br><button id="check">Sprawdź czy wygrałeś</button><br>
+    <span id="wybor_RGB">
+        <input type="number" id="Red">
+        <input type="number" id="Green">
+        <input type="number" id="Blue"><br>
+        <span id="podpowiedz_RGB_1"></span>
+        <span id="podpowiedz_RGB_2"></span>
+        <span id="podpowiedz_RGB_3"></span>
+    </span>
+    <span id="wybor_HEX">
+        <select id="pick1">
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+            <option>D</option>
+            <option>E</option>
+            <option>F</option>
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+        </select>
+        <select id="pick2">
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+            <option>D</option>
+            <option>E</option>
+            <option>F</option>
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+        </select>
+        <select id="pick3">
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+            <option>D</option>
+            <option>E</option>
+            <option>F</option>
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+        </select>
+        <select id="pick4">
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+            <option>D</option>
+            <option>E</option>
+            <option>F</option>
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+        </select>
+        <select id="pick5">
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+            <option>D</option>
+            <option>E</option>
+            <option>F</option>
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+        </select>
+        <select id="pick6">
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+            <option>D</option>
+            <option>E</option>
+            <option>F</option>
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+        </select>
+    <br>
+    <span id="podpowiedz1"></span>
+    <span id="podpowiedz2"></span>
+    <span id="podpowiedz3"></span>
+    <span id="podpowiedz4"></span>
+    <span id="podpowiedz5"></span>
+    <span id="podpowiedz6"></span>
+    </span>
+    <script>
+        document.getElementById("bt_RGB").onclick = () =>{
+            document.getElementById("wybor_HEX").style.display = 'none';
+            document.getElementById("wybor_RGB").style.display = 'block';
+
+            document.getElementById("podpowiedz_RGB_1").style.color = 'transparent';
+            document.getElementById("podpowiedz_RGB_2").style.color = 'transparent';
+            document.getElementById("podpowiedz_RGB_3").style.color = 'transparent';
+
+            
+
+            let q = 0;
+            let odpowiedz_RGB_R;
+            let odpowiedz_RGB_G;
+            let odpowiedz_RGB_B;
+            let los_RGB_R;
+            let los_RGB_G;
+            let los_RGB_B;
+
+            for(q; q < 3; q++){
+                los_RGB_R = Math.floor(Math.random() * (255 - 1) + 1);
+                odpowiedz_RGB_R = los_RGB_R;
+
+                los_RGB_G = Math.floor(Math.random() * (255 - 1) + 1);
+                odpowiedz_RGB_G = los_RGB_G;
+
+                los_RGB_B = Math.floor(Math.random() * (255 - 1) + 1);
+                odpowiedz_RGB_B = los_RGB_B;
+            }
+
+            console.log(los_RGB_R, ", " , los_RGB_G, ", ", los_RGB_B)
+            document.getElementById("kolor").style.backgroundColor = "rgb(" + los_RGB_R + ", " + los_RGB_G + ", " + los_RGB_B + ")";
+
+            let y = 0;
+            document.getElementById("proby").innerHTML = "Próby: " + y;
+            let list_RGB = [];
+            let a = 0;
+            let podpowiedz_RGB;
+            document.getElementById("check").onclick = () =>{
+                y++;
+                document.getElementById("proby").innerHTML = "Próby: " + y;
+            let choice1_RGB = document.getElementById("Red").value;
+            let choice2_RGB = document.getElementById("Green").value;
+            let choice3_RGB = document.getElementById("Blue").value;
+                console.log("R: " + choice1_RGB + "G: " + choice2_RGB + "B: " + choice3_RGB);
+            document.getElementById("podpowiedz_RGB_1").innerHTML = odpowiedz_RGB_R;
+            document.getElementById("podpowiedz_RGB_2").innerHTML = odpowiedz_RGB_G;
+            document.getElementById("podpowiedz_RGB_3").innerHTML = odpowiedz_RGB_B;
+                
+            
+            
+            if(((choice1_RGB != odpowiedz_RGB_R) || (choice2_RGB != odpowiedz_RGB_G) || (choice3_RGB != odpowiedz_RGB_B)) && (a < 2)){
+                podpowiedz_RGB = Math.floor(Math.random() * 3);
+                while((list_RGB.includes(podpowiedz_RGB))){
+                    podpowiedz_RGB = Math.floor(Math.random() * 3);
+                    }
+                list_RGB[a] = podpowiedz_RGB;
+                console.log(list_RGB)
+                console.log(podpowiedz_RGB + "  DADASD")
+                document.getElementById("podpowiedz_RGB_" + (podpowiedz_RGB + 1)).style.color = '#74b3ce';
+                a++;
+                console.log(a)
+            } if((choice1_RGB == odpowiedz_RGB_R) && (choice2_RGB == odpowiedz_RGB_G) && (choice3_RGB == odpowiedz_RGB_B)){
+                alert("WYGRALES")
+            }
+
+            }
+        }
+
+        document.getElementById("bt_HEX").onclick = () =>{
+            document.getElementById("podpowiedz1").style.color = 'transparent';
+            document.getElementById("podpowiedz2").style.color = 'transparent';
+            document.getElementById("podpowiedz3").style.color = 'transparent';
+            document.getElementById("podpowiedz4").style.color = 'transparent';
+            document.getElementById("podpowiedz5").style.color = 'transparent';
+            document.getElementById("podpowiedz6").style.color = 'transparent';
+
+            document.getElementById("wybor_HEX").style.display = 'block';
+            document.getElementById("wybor_RGB").style.display = 'none';
+            const mozliwosci = ['A', 'B', 'C','D', 'E','F',0 ,1, 2, 3, 4, 5, 6, 7, 8, 9];
+            let choice1 = document.getElementById("pick1");
+            let choice2 = document.getElementById("pick2");
+            let choice3 = document.getElementById("pick3");
+            let choice4 = document.getElementById("pick4");
+            let choice5 = document.getElementById("pick5");
+            let choice6 = document.getElementById("pick6");
+            let i = 0;
+            let odpowiedz = "";
+            let los;
+            for(i; i < 6; i++){
+                los = Math.floor(Math.random()* mozliwosci.length);
+                odpowiedz = odpowiedz + mozliwosci[los];
+            }
+            console.log(odpowiedz)
+            document.getElementById("kolor").style.backgroundColor = "#" + odpowiedz;
+            
+            
+            let x = 0;
+            let podpowiedz;
+            console.log(odpowiedz)
+            let list = []
+            let o = 0;
+            document.getElementById("proby").innerHTML = "Próby: " + o;
+            document.getElementById("check").onclick = () =>{
+                o++;
+                document.getElementById("proby").innerHTML = "Próby: " + o;
+                let j = 0;
+            let guess = "";
+            let val;
+            for(j; j < 6; j++){
+                val = document.getElementById("pick" + (j+1)).value;
+                guess = guess + val;
+            }
+            document.getElementById("podpowiedz1").innerHTML = odpowiedz[0];
+            document.getElementById("podpowiedz2").innerHTML = odpowiedz[1];
+            document.getElementById("podpowiedz3").innerHTML = odpowiedz[2];
+            document.getElementById("podpowiedz4").innerHTML = odpowiedz[3];
+            document.getElementById("podpowiedz5").innerHTML = odpowiedz[4];
+            document.getElementById("podpowiedz6").innerHTML = odpowiedz[5];
+            if((guess != odpowiedz) && (x < 5)){
+                podpowiedz = Math.floor(Math.random() * 6);
+                while((list.includes(podpowiedz))){
+                    podpowiedz = Math.floor(Math.random() * 6);
+                    }
+                list[x] = podpowiedz;
+                console.log(list)
+                console.log(podpowiedz + "  DADASD")
+                document.getElementById("podpowiedz" + (podpowiedz + 1)).style.color = '#74b3ce';
+                x++;
+                console.log(x)
+            }
+            if(guess == odpowiedz){
+                alert("WYGRALES");
+            }
+        }
+        
+        }
+        
+    </script>
+</body>
+</html>

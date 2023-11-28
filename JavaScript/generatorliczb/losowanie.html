@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="inputs">
+        <form>
+        <input type="number" id="max" style="height: 70px; width: 200px; border-radius: 15px; margin-top: 15px; margin-left: 20px;"><span style="font-size: 30px;">&nbsp; < &nbsp; Podaj zakres maksymalny</span><br>
+        <input type="number" id="numbers" style="height: 70px; width: 200px; border-radius: 15px; margin-top: 10px; margin-left: 20px;"><span style="font-size: 30px;"> &nbsp;< &nbsp; Podaj ilość losowanych liczb</span>
+        <button type="button" id="bt" style="border-radius: 15px; float: right; margin-top: -75px; margin-right: 20px">SEND</button><br>
+        <button type="reset" style="border-radius: 15px; float: right; margin-top: -80px; margin-right: 20px;">RESET</button>
+        
+        
+        </form>
+        
+    </div>
+    <div id="contener">
+        <h1 id="napis"></h1>
+     <div id="item">
+     <ul id="lista"></ul>
+     </div>
+    </div>
+    <script>
+        document.getElementById("bt").onclick = () =>{
+            document.getElementById("napis").innerHTML = "TWOJE LICZBY"
+        let max = document.getElementById("max").value;
+        let numbers = document.getElementById("numbers").value;
+        let text1 = ""
+        let text2 = ""
+        let list = []
+        let los
+        let j = 0;
+        for(j; j < numbers; j++){
+            console.log(text1)
+            los = Math.floor(Math.random() * max) + 1;
+                if(!(list.includes(los))){
+                list[j] = los;
+                }else{
+                    while((list.includes(los))){
+                        los = Math.floor(Math.random() * max) + 1;
+                    }
+                    list[j] = los;
+                }
+            
+            text1 = '<span class="styl">' + '<li>' + list[j] +'</li>' + '</span>';
+            text2 = text1 + text2;
+
+        }
+        output = document.getElementById("lista")
+        console.log(text2)
+        output.innerHTML = text2;
+        console.log(los)
+
+
+
+        for(let i = 0; i <= numbers; i++){
+            
+        }
+    }
+    </script>
+</body>
+</html>

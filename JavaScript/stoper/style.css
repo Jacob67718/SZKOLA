@@ -1,0 +1,54 @@
+body{
+background: rgb(255, 13, 13);
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+height: 100%;
+}
+
+.main {
+width: 1200px;
+margin: 30px auto;
+color: rgb(107, 3, 3);
+text-align:center;
+}
+
+h1, h2, h3 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 2.6em;
+  text-transform: uppercase;
+}
+
+#minuty, #sekundy, #setne_sekundy, .dwukropek, ul{
+  font-size:2em;
+}
+
+ul{
+  color: rgb(107, 3, 3);
+}
+
+li{
+  text-align:center;
+  margin-right: 4%;
+}
+
+
+
+
+button{
+  border-radius: 5px;
+  background-color: rgb(255, 13, 13);
+  color: rgb(107, 3, 3);
+  border: solid 1px rgb(107, 3, 3);
+  text-decoration:none;
+  cursor:pointer;
+  font-size:1.2em;
+  padding:18px 10px;
+  width:180px;
+  margin: 10px;
+  outline: none;
+}
+button:hover{
+  background:rgb(107, 3, 3);
+  border: solid 1px rgb(255, 13, 13);
+  color: rgb(255, 13, 13);
+}

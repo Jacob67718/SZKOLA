@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+        <h1>Stoper</h1>
+        <p><span id="minuty">00</span><span class="dwukropek">:</span><span id="sekundy">00</span><span class="dwukropek">:</span><span id="setne_sekundy">00</span></p>
+        <button id="button-start">Start</button>
+        <button id="button-stop">Stop</button>
+        <button id="button-reset">Reset</button>
+        <button id="pomiar">Pomiar</button>
+        <button id="resetPomiarow">Reset pomiarów</button>
+        <ul id="lista" type="none"></ul>
+    </div> 
+        
+
+        <script>
+            window.onload = () => {
+  let minuty = 0;
+  let sekundy = 0; 
+  let setne_sekundy = 0; 
+  let zmiana_minuty = document.getElementById("minuty");
+  let zmiana_setne_sekundy = document.getElementById("setne_sekundy");
+  let zmiana_sekundy = document.getElementById("sekundy");
+  let buttonStart = document.getElementById('button-start');
+  let buttonStop = document.getElementById('button-stop');
+  let buttonReset = document.getElementById('button-reset');
+  let pomiar = document.getElementById("pomiar");
+  let reset_pomiarow = document.getElementById("resetPomiarow");
+  let text1 = "";
+  let text2 = "";
+  let Interval ;
+
+  buttonStart.onclick = () => {
+    
+    clearInterval(Interval);
+     Interval = setInterval(startTimer, 10);
+  }
+  
+    buttonStop.onclick = () => {
+       clearInterval(Interval);
+  }
+  
+
+  buttonReset.onclick = () => {
+     clearInterval(Interval);
+    setne_sekundy = "00";
+  	sekundy = "00";
+    minuty = "00";
+    zmiana_setne_sekundy.innerHTML = setne_sekundy;
+  	zmiana_sekundy.innerHTML = sekundy;
+    zmiana_minuty.innerHTML = minuty;
+    document.getElementById("lista").innerHTML = "";
+    text2 = ""
+    
+    setne_sekundy = 0;
+    sekundy = 0;
+    minuty = 0;
+  }
+  
+  reset_pomiarow.onclick = () =>{
+    document.getElementById("lista").innerHTML = "";
+    text2 = ""
+  }
+  pomiar.onclick = () => {
+    if(minuty <= 9 && sekundy <= 9 && setne_sekundy <=9){
+        text1 = '<li>' + '0' + minuty + ':' + '0' + sekundy + ':' + '0' + setne_sekundy + '</li>';
+        text2 = text2 + text1;
+    }
+
+    if(minuty <= 9 && sekundy <= 9 && setne_sekundy > 9){
+        text1 = '<li>' + '0' + minuty + ':' + '0' + sekundy + ':' + setne_sekundy + '</li>';
+        text2 = text2 + text1;
+    }
+
+    if(minuty <= 9 && sekundy > 9){
+        text1 = '<li>' + '0' + minuty + ':' + sekundy + ':' + setne_sekundy + '</li>';
+        text2 = text2 + text1;
+    }
+
+    document.getElementById("lista").innerHTML = text2;
+  }
+   
+  
+  function startTimer () {
+    setne_sekundy++; 
+    
+    if(setne_sekundy <= 9){
+      zmiana_setne_sekundy.innerHTML = "0" + setne_sekundy;
+    }
+    
+    if (setne_sekundy > 9){
+      zmiana_setne_sekundy.innerHTML = setne_sekundy;
+      
+    } 
+
+    if (sekundy == 59 && setne_sekundy == 99){
+        sekundy = 0;
+        setne_sekundy = 0;
+        minuty++;
+        zmiana_minuty.innerHTML = "0" + minuty;
+        zmiana_sekundy.innerHTML = "0" + sekundy;
+        zmiana_setne_sekundy.innerHTML = "0" + setne_sekundy;
+        
+    }
+    
+    if (setne_sekundy > 99) {
+      sekundy++;
+      zmiana_sekundy.innerHTML = "0" + sekundy;
+      setne_sekundy = 0;
+      zmiana_setne_sekundy.innerHTML = "0" + 0;
+    }
+    
+    if (sekundy > 9){
+      zmiana_sekundy.innerHTML = sekundy;
+    }
+
+    
+  
+  }
+  
+
+}
+        </script>
+</body>
+</html>

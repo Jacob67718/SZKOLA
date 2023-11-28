@@ -1,0 +1,52 @@
+body{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #172a3a;
+    color: #74b3ce;
+    font-family: 'consolas';
+    font-size: 50px;
+}
+
+#kolor{
+    margin: auto;
+    margin-bottom: 25px;
+    height: 400px;
+    width: 600px;
+    background-color: transparent;
+    border-radius: 100px;
+}
+input{
+    height: 20px;
+}
+select{
+    height: 25px;
+}
+
+
+
+button{
+    width: 180px;
+    margin: 25px;
+    border-radius: 5px;
+    padding:18px 10px;
+    background-color: #004346;
+    border: #09bc8a 1px solid;
+}
+#wybor_HEX{
+    display: none;
+}
+#wybor_RGB{
+    display: none;
+}
+
+button:hover{
+    background-color: #09bc8a;
+    border: #004346 1px solid;
+}
+
+#podpowiedz1, #podpowiedz2, #podpowiedz3, #podpowiedz4, #podpowiedz5, #podpowiedz6, #podpowiedz_RGB_1, #podpowiedz_RGB_2, #podpowiedz_RGB_3{
+    color: transparent;
+    font-size: 100px;
+    margin: 10px;
+}

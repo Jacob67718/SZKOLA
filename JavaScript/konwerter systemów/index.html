@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"> 
+    <title>Document</title>
+</head>
+<body>
+    <div id="top"><h1>KONWERTER SYSTEMÓW LICZBOWYCH</h1></div><br>
+    <div class="etykieta"><p>BIN</p></div><input type="text" id="bin" class="input"><div class="etykieta2" id="e1"><p>NIEPOPRAWNA WARTOŚĆ LICZBY</p></div><br><br><br>
+    <div class="etykieta"><p>OCT</p></div><input type="text" id="oct" class="input"><div class="etykieta2" id="e2"><p>NIEPOPRAWNA WARTOŚĆ LICZBY</p></div><br><br><br>
+    <div class="etykieta"><p>DEC</p></div><input type="text" id="dec" class="input"><div class="etykieta2" id="e3"><p>NIEPOPRAWNA WARTOŚĆ LICZBY</p></div><br><br><br>
+    <div class="etykieta"><p>HEX</p></div><input type="text" id="hex" class="input"><div class="etykieta2" id="e4"><p>NIEPOPRAWNA WARTOŚĆ LICZBY</p></div><br><br><br>
+
+    <script>
+        document.getElementById("bin").onkeyup = () =>{
+            document.getElementById("e1").style.display = 'none';
+            const wzor1 = /^[0-1]*$/;
+            let resultoct = document.getElementById("oct");
+            let resultdec = document.getElementById("dec");
+            let resulthex = document.getElementById("hex");
+            let inputbin = Number(document.getElementById("bin").value);
+            let inbin1 = inputbin;
+            let inbin2 = inputbin;
+            let inbin3 = inputbin;
+            let textbin1 = "";
+            let textbin2 = "";
+            let textbin3 = "";
+            let binnadec = [];
+            let binnaoct = [];
+            let binnahex = [];
+            let decnaoct1 = [];
+            let decnahex1 = [];
+            let jakaszmienna = 0;
+            let jakaszmienna1 = 0;
+            let jakaszmienna3 = 0;
+            let ibin2 = 0, xbin2 = 0;
+            let ibin1 = 0, xbin1 = 0;
+            let ibin3 = 0, xbin3 = 0;
+            if(wzor1.test(inputbin) == true){
+            //ZMIANA Z BINARNEGO NA OCTALNY
+            binnaoct = Array.from(String(inbin1), Number);
+            let powerbin1 = binnaoct.length-1;
+            binnaoct.reverse();
+            while(powerbin1 != -1){
+                console.log(powerbin1)
+                jakaszmienna = jakaszmienna + (binnaoct[powerbin1] * Math.pow(2, powerbin1));
+                console.log(jakaszmienna)
+                powerbin1--;
+            }
+            
+            while(jakaszmienna != 0){
+                xbin2 = jakaszmienna % 8;
+                ibin2++;
+                decnaoct1[ibin2] = xbin2;
+                jakaszmienna = Math.floor((jakaszmienna / 8)).toFixed(0);
+            }while(ibin2 != 0){
+                textbin2 = textbin2 + "" + decnaoct1[ibin2];
+                ibin2--;
+            }
+            resultoct.value = textbin2;
+
+            //ZMIANA Z BINARNEGO NA DZIESIĘTNY
+            binnadec = Array.from(String(inbin2), Number);
+            let powerbin2 = binnadec.length-1;
+            binnadec.reverse();
+            while(powerbin2 != -1){
+                console.log(powerbin2)
+                jakaszmienna1 = jakaszmienna1 + (binnadec[powerbin2] * Math.pow(2, powerbin2));
+                console.log(jakaszmienna1)
+                powerbin2--;
+            }
+            let cos1 = jakaszmienna1;
+            if(cos1 == 0){
+                resultdec.value = "";
+            }else{
+                resultdec.value = jakaszmienna1;
+            }
+            
+            
+            
+
+            //ZMIANA Z BINARNEGO NA HEXADECYMALNY
+
+            binnahex = Array.from(String(inbin3), Number);
+            let powerbin3 = binnahex.length-1;
+            binnahex.reverse();
+            while(powerbin3 != -1){
+                console.log(powerbin3)
+                jakaszmienna3 = jakaszmienna3 + (binnahex[powerbin3] * Math.pow(2, powerbin3));
+                console.log(jakaszmienna3)
+                powerbin3--;
+            }
+            while(jakaszmienna3 != 0){
+                xbin3 = jakaszmienna3 % 16;
+                ibin3++;
+                decnahex1[ibin3] = xbin3;
+                jakaszmienna3 = Math.floor((jakaszmienna3 / 16)).toFixed(0);
+            }while(ibin3 != 0){
+                switch(decnahex1[ibin3]){
+                    case 10:
+                    textbin3 = textbin3 + "" + "A";
+                    ibin3--;
+                    break;
+
+                    case 11:
+                    textbin3 = textbin3 + "" + "B";
+                    ibin3--;
+                    break;
+
+                    case 12:
+                    textbin3 = textbin3 + "" + "C";
+                    ibin3--;
+                    break;
+
+                    case 13:
+                    textbin3 = textbin3 + "" + "D";
+                    ibin3--;
+                    break;
+
+                    case 14:
+                    textbin3 = textbin3 + "" + "E";
+                    ibin3--;
+                    break;
+
+                    case 15:
+                    textbin3 = textbin3 + "" + "F";
+                    ibin3--;
+                    break;
+
+                    default:
+                    textbin3 = textbin3 + "" + decnahex1[ibin3];
+                    ibin3--;
+                    break;
+                }
+            }
+            resulthex.value = textbin3;
+            
+        }else{
+            document.getElementById("e1").style.display = 'block';
+        }
+    }
+
+        document.getElementById("oct").onkeyup = () =>{
+            document.getElementById("e2").style.display = 'none';
+            const wzor2 = /^[0-7]*$/;
+            let resultbin = document.getElementById("bin");
+            let resultdec = document.getElementById("dec");
+            let resulthex = document.getElementById("hex");
+            let inputoct = Number(document.getElementById("oct").value);
+            let inoct1 = inputoct;
+            let inoct2 = inputoct;
+            let inoct3 = inputoct;
+            let textoct1 = "";
+            let textoct2 = "";
+            let textoct3 = "";
+            let octnabin = [];
+            let octnadec = [];
+            let octnahex = [];
+            let decnabin1 = [];
+            let decnahex1 = [];
+            let jakaszmienna21 = 0;
+            let jakaszmienna22 = 0;
+            let jakaszmienna23 = 0;
+            let ioct1 = 0, xoct1 = 0;
+            let ioct2 = 0, xoct2 = 0;
+            let ioct3 = 0, xoct3 = 0;
+            if(wzor2.test(inputoct) == true){
+            //ZMIANA Z OCTALNEGO NA BINARNY
+            octnabin = Array.from(String(inoct1), Number);
+            let poweroct1 = octnabin.length-1;
+            octnabin.reverse();
+            while(poweroct1 != -1){
+                jakaszmienna21 = jakaszmienna21 + (octnabin[poweroct1] * Math.pow(8, poweroct1));
+                console.log(jakaszmienna21)
+                poweroct1--;
+            }
+            while(jakaszmienna21 != 0){
+                xoct1 = jakaszmienna21 % 2;
+                ioct1++;
+                decnabin1[ioct1] = xoct1;
+                jakaszmienna21 = Math.floor((jakaszmienna21 / 2)).toFixed(0);
+            }while(ioct1 != 0){
+                textoct1 = textoct1 + "" + decnabin1[ioct1];
+                ioct1--;
+            }
+            resultbin.value = textoct1;
+
+            
+            //ZMIANA Z OCTALNEGO NA DECYMALNY
+            octnadec = Array.from(String(inoct2), Number);
+            let poweroct2 = octnadec.length-1;
+            octnadec.reverse();
+            while(poweroct2 != -1){
+                console.log(poweroct2)
+                jakaszmienna22 = jakaszmienna22 + (octnadec[poweroct2] * Math.pow(8, poweroct2));
+                console.log(jakaszmienna22)
+                poweroct2--;
+            }
+            
+            let cos2 = jakaszmienna22;
+            if(cos2 == 0){
+                resultdec.value = "";
+            }else{
+                resultdec.value = jakaszmienna22;
+            }
+            
+            //ZMIANA Z OCTALNEGO NA HEXADECYMALNY
+            octnahex = Array.from(String(inoct3), Number);
+            let powerhex3 = octnahex.length-1;
+            octnahex.reverse();
+            while(powerhex3 != -1){
+                jakaszmienna23 = jakaszmienna23 + (octnahex[powerhex3] * Math.pow(8, powerhex3));
+                console.log(jakaszmienna23)
+                powerhex3--;
+            }
+            while(jakaszmienna23 != 0){
+                xoct3 = jakaszmienna23 % 16;
+                ioct3++;
+                decnahex1[ioct3] = xoct3;
+                jakaszmienna23 = Math.floor((jakaszmienna23 / 16)).toFixed(0);
+            }while(ioct3 != 0){
+                switch(decnahex1[ioct3]){
+                    case 10:
+                    textoct3 = textoct3 + "" + "A";
+                    ioct3--;
+                    break;
+
+                    case 11:
+                    textoct3 = textoct3 + "" + "B";
+                    ioct3--;
+                    break;
+
+                    case 12:
+                    textoct3 = textoct3 + "" + "C";
+                    ioct3--;
+                    break;
+
+                    case 13:
+                    textoct3 = texthex3 + "" + "D";
+                    ioct3--;
+                    break;
+
+                    case 14:
+                    textoct3 = textoct3 + "" + "E";
+                    ioct3--;
+                    break;
+
+                    case 15:
+                    textoct3 = textoct3 + "" + "F";
+                    ioct3--;
+                    break;
+
+                    default:
+                    textoct3 = textoct3 + "" + decnahex1[ioct3];
+                    ioct3--;
+                    break;
+                }
+                
+            }
+            resulthex.value = textoct3;
+        }else{
+            document.getElementById("e2").style.display = 'block';
+        }
+    }
+
+        document.getElementById("dec").onkeyup = () =>{
+            document.getElementById("e3").style.display = 'none';
+            const wzor3 = /^[0-9]*$/;
+            let resultoct = document.getElementById("oct");
+            let resultbin = document.getElementById("bin");
+            let resulthex = document.getElementById("hex");
+            let inputdec = Number(document.getElementById("dec").value);
+            let indec1 = inputdec;
+            let indec2 = inputdec;
+            let indec3 = inputdec;
+            let textdec1 = "";
+            let textdec2 = "";
+            let textdec3 = "";
+            let decnabin = [];
+            let decnaoct = [];
+            let decnahex = [];
+            let xdec1 = 0, idec1 = 0, xdec2 = 0, idec2 = 0, xdec3 = 0, idec3 = 0;
+
+            if(wzor3.test(inputdec) == true){
+            //ZMIANA Z DECYMALNEGO NA BINARNY
+            while(indec1 != 0){
+                xdec1 = indec1 % 2;
+                idec1++;
+                decnabin[idec1] = xdec1;
+                indec1 = Math.floor((indec1 / 2)).toFixed(0);
+            }while(idec1 != 0){
+                textdec1 = textdec1 + "" + decnabin[idec1];
+                idec1--;
+            }
+            resultbin.value = textdec1;
+
+            //ZMIANA Z DECYMALNEGO NA OCTALNY
+            while(indec2 != 0){
+                xdec2 = indec2 % 8;
+                idec2++;
+                decnaoct[idec2] = xdec2;
+                indec2 = Math.floor((indec2 / 8)).toFixed(0);
+            }while(idec2 != 0){
+                textdec2 = textdec2 + "" + decnaoct[idec2];
+                idec2--;
+            }
+            resultoct.value = textdec2;
+
+            //ZMIANA Z DECYMALNEGO NA HEXADECYMALNY
+            while(indec3 != 0){
+                xdec3 = indec3 % 16;
+                idec3++;
+                decnahex[idec3] = xdec3;
+                indec3 = Math.floor((indec3 / 16)).toFixed(0);
+            }while(idec3 != 0){
+                switch(decnahex[idec3]){
+                    case 10:
+                    textdec3 = textdec3 + "" + "A";
+                    idec3--;
+                    break;
+
+                    case 11:
+                    textdec3 = textdec3 + "" + "B";
+                    idec3--;
+                    break;
+
+                    case 12:
+                    textdec3 = textdec3 + "" + "C";
+                    idec3--;
+                    break;
+
+                    case 13:
+                    textdec3 = textdec3 + "" + "D";
+                    idec3--;
+                    break;
+
+                    case 14:
+                    textdec3 = textdec3 + "" + "E";
+                    idec3--;
+                    break;
+
+                    case 15:
+                    textdec3 = textdec3 + "" + "F";
+                    idec3--;
+                    break;
+
+                    default:
+                    textdec3 = textdec3 + "" + decnahex[idec3];
+                    idec3--;
+                    break;
+                }
+                
+            }
+            resulthex.value = textdec3;
+
+        }else{
+            document.getElementById("e3").style.display = 'block';
+        }
+        }
+        document.getElementById("hex").onkeyup = () =>{
+            document.getElementById("e4").style.display = 'none';
+            const wzor4 = /^[[0-9A-F]*$/;
+            let resultoct = document.getElementById("oct");
+            let resultdec = document.getElementById("dec");
+            let resultbin = document.getElementById("bin");
+            let inputhex = document.getElementById("hex").value;
+            let inhex1 = inputhex;
+            let inhex2 = inputhex;
+            let inhex3 = inputhex;
+            let texthex1 = "";
+            let texthex2 = "";
+            let texthex3 = "";
+            let hexnadec = [];
+            let hexnabin = [];
+            let hexnaoct = [];
+            let decnaoct2 = [];
+            let decnabin2 = [];
+            let jakaszmienna11 = 0;
+            let jakaszmienna12 = 0;
+            let jakaszmienna13 = 0;
+            let ihex1 = 0, xhex1 = 0;
+            let ihex2 = 0, xhex2 = 0;
+            let ihex3 = 0, xhex3 = 0;
+
+            if(wzor4.test(inputhex) == true){
+            //ZMIANA Z HEXADECYMALNEGO NA DECYMALNY
+            hexnadec = Array.from(String(inhex1));
+            let powerhex1 = hexnadec.length-1;
+            hexnadec.reverse();
+            console.log(hexnadec)
+            while(powerhex1 != -1){
+                switch(hexnadec[powerhex1]){
+                    case 'A':
+                    jakaszmienna11 = jakaszmienna11 + (10 * Math.pow(16, powerhex1));
+                    powerhex1--;
+                    break;
+
+                    case 'B':
+                    jakaszmienna11 = jakaszmienna11 + (11 * Math.pow(16, powerhex1));
+                    powerhex1--;
+                    break;
+
+                    case 'C':
+                    jakaszmienna11 = jakaszmienna11 + (12 * Math.pow(16, powerhex1));
+                    powerhex1--;
+                    break;
+
+                    case 'D':
+                    jakaszmienna11 = jakaszmienna11 + (13 * Math.pow(16, powerhex1));
+                    powerhex1--;
+                    break;
+
+                    case 'E':
+                    jakaszmienna11 = jakaszmienna11 + (14 * Math.pow(16, powerhex1));
+                    powerhex1--;
+                    break;
+
+                    case 'F':
+                    jakaszmienna11 = jakaszmienna11 + (15 * Math.pow(16, powerhex1));
+                    powerhex1--;
+                    break;
+
+                    default:
+                    jakaszmienna11 = jakaszmienna11 + (hexnadec[powerhex1] * Math.pow(16, powerhex1));
+                    console.log(jakaszmienna11)
+                    powerhex1--;
+                    break;
+                }
+   
+            }
+            
+            let cos3 = jakaszmienna11;
+            if(cos3 == 0){
+                resultdec.value = "";
+            }else{
+                resultdec.value = jakaszmienna11;
+            }
+             
+            
+        
+            //ZMIANA Z HEXADECYMALNEGO NA BINARNY
+            hexnabin = Array.from(String(inhex2));
+            let powerhex2 = hexnabin.length-1;
+            hexnabin.reverse();
+            while(powerhex2 != -1){
+                switch(hexnabin[powerhex2]){
+                    case 'A':
+                    jakaszmienna12 = jakaszmienna12 + (10 * Math.pow(16, powerhex2));
+                    powerhex2--;
+                    break;
+
+                    case 'B':
+                    jakaszmienna12 = jakaszmienna12 + (11 * Math.pow(16, powerhex2));
+                    powerhex2--;
+                    break;
+
+                    case 'C':
+                    jakaszmienna12 = jakaszmienna12 + (12 * Math.pow(16, powerhex2));
+                    powerhex2--;
+                    break;
+
+                    case 'D':
+                    jakaszmienna12 = jakaszmienna12 + (13 * Math.pow(16, powerhex2));
+                    powerhex2--;
+                    break;
+
+                    case 'E':
+                    jakaszmienna12 = jakaszmienna12 + (14 * Math.pow(16, powerhex2));
+                    powerhex2--;
+                    break;
+
+                    case 'F':
+                    jakaszmienna12 = jakaszmienna12 + (15 * Math.pow(16, powerhex2));
+                    powerhex2--;
+                    break;
+
+                    default:
+                    jakaszmienna12 = jakaszmienna12 + (hexnabin[powerhex2] * Math.pow(16, powerhex2));
+                    console.log(jakaszmienna12)
+                    powerhex2--;
+                    break;
+                }
+                
+            }
+            while(jakaszmienna12 != 0){
+                xhex2 = jakaszmienna12 % 2;
+                ihex2++;
+                decnabin2[ihex2] = xhex2;
+                jakaszmienna12 = Math.floor((jakaszmienna12 / 2)).toFixed(0);
+            }while(ihex2 != 0){
+                texthex2 = texthex2 + "" + decnabin2[ihex2];
+                ihex2--;
+            }
+            resultbin.value = texthex2;
+
+            //ZMIANA Z HEXADECYMALNEGO NA OCTALNY
+            hexnaoct = Array.from(String(inhex3));
+            let powerhex3 = hexnaoct.length-1;
+            hexnaoct.reverse();
+            while(powerhex3 != -1){
+                switch(hexnaoct[powerhex3]){
+                    case 'A':
+                    jakaszmienna13 = jakaszmienna13 + (10 * Math.pow(16, powerhex3));
+                    powerhex3--;
+                    break;
+
+                    case 'B':
+                    jakaszmienna13 = jakaszmienna13 + (11 * Math.pow(16, powerhex3));
+                    powerhex3--;
+                    break;
+
+                    case 'C':
+                    jakaszmienna13 = jakaszmienna13 + (12 * Math.pow(16, powerhex3));
+                    powerhex3--;
+                    break;
+
+                    case 'D':
+                    jakaszmienna13 = jakaszmienna13 + (13 * Math.pow(16, powerhex3));
+                    powerhex3--;
+                    break;
+
+                    case 'E':
+                    jakaszmienna13 = jakaszmienna13 + (14 * Math.pow(16, powerhex3));
+                    powerhex3--;
+                    break;
+
+                    case 'F':
+                    jakaszmienna13 = jakaszmienna13 + (15 * Math.pow(16, powerhex3));
+                    powerhex3--;
+                    break;
+
+                    default:
+                    jakaszmienna13 = jakaszmienna13 + (hexnaoct[powerhex3] * Math.pow(16, powerhex3));
+                    console.log(jakaszmienna13)
+                    powerhex3--;
+                    break;
+                }
+                
+            }
+
+            while(jakaszmienna13 != 0){
+                xhex3 = jakaszmienna13 % 8;
+                ihex3++;
+                decnaoct2[ihex3] = xhex3;
+                jakaszmienna13 = Math.floor((jakaszmienna13 / 8)).toFixed(0);
+            }while(ihex3 != 0){
+                texthex3 = texthex3 + "" + decnaoct2[ihex3];
+                ihex3--;
+            }
+            resultoct.value = texthex3;
+        }else{
+            document.getElementById("e4").style.display = 'block';
+        }
+    }
+
+        
+    </script>
+    <footer>JAKUB MROZ 3I</footer>
+</body>
+</html>
