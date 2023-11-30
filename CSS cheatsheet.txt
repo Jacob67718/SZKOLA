@@ -13,3 +13,8 @@ Wysrodkować wiecej elementow:
         grtid-template-rows: 100px 200px;
         placeitems: center;
     }
+    .flex{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+    }
