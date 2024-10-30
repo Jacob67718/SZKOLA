@@ -1,0 +1,39 @@
+squaredEvenNumbers = [item**2 for item in numbers if(item%2 == 0)]
+
+evenNumbersGenereator = (item for item in range(400) if(element%2 == 0)) --- doesn't save result in memory like []
+for item in evenNumbersGenereator: --- access the elements
+    print x
+
+names = {"Arkadiusz", "Wioletta", "Karol", "Bartłomiej", "Jakub"}
+namesLenght = {name : len(name) for name in names} --- same but with dictionares
+
+names = {name.capitalize() for name in names} --- replaces every item in list
+
+celcius = {"t1": -20, "t2": -15, "t3": 0, "t4": 12, "t5": 24}
+fahrenheit = {key: celcius * 1.8 + 32 for key, celcius in celcius.items() if(celcius > 5 and celcius < 20)}
+
+import time
+time.perf_counter() --- check time used for code
+
+start = time.perf_counter()
+function()
+end = time.perf_counter()
+
+print(end - start)
+
+USEFULL STRING FUNCTIONS:
+    name.startswith("A")
+
+USEFULL LISTS FUNCTIONS:
+    list.items() --- if used on dictionary, returns list which every element is 'index: definition'
+
+USEFULL FUNCTION METHODS:
+    def functionPerformance(func, arg):
+        start = time.perf_counter()
+        func(arg)
+        end = time.perf_counter()
+    
+    def showMessage(message):
+        print(message)
+    
+    functionPerformance(showMessage, "message") --- use function througout another function
