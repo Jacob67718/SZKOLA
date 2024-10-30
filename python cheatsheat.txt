@@ -27,6 +27,10 @@ USEFULL STRING FUNCTIONS:
 USEFULL LISTS FUNCTIONS:
     list.items() --- if used on dictionary, returns list which every element is 'index: definition'
 
+FILTER LIST:
+    my_list = [2, 14, 22, 7, 6, 4, 5, 17]
+    my_list_filtered = list(filter(lambda x: x % 2 == 0, my_list))
+
 USEFULL FUNCTION METHODS:
     def functionPerformance(func, arg):
         start = time.perf_counter()
